@@ -1,0 +1,31 @@
+@import 'compass';
+
+.repeater { // big table
+	table {
+		.row { // individual rows
+			.repeater { // inner repeater
+				thead {
+					display: none;
+				}
+
+				& > table {
+					@include box-shadow(0 0 0 #fff);
+				}
+
+				.order {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+// admin menu icons
+#adminmenu .wp-menu-image a {
+	overflow: hidden;
+}
+
+#wp-admin-bar-wp-logo,
+#wp-admin-bar-comments,
+#wp-admin-bar-new-content,
+#wp-admin-bar-edit { display: none; }

@@ -1,0 +1,275 @@
+// ----- imports
+@import 'compass';
+@import 'animation';
+
+// ----- colors
+
+$black: #1E1E1E; 
+$blue: #0173BC; 
+
+// ----- mixins
+
+@mixin tight {
+	margin: 0;
+	padding: 0;
+}
+@mixin transition {
+	@include transition-duration(0.2s);
+	@include transition-timing-function(ease-in-out);
+}
+
+.lt-ie9 {
+	body {
+		min-width: 960px;
+		@include opacity(1);
+		overflow: auto;
+		overflow-x: auto;
+		overflow-y: hidden;
+		&.page-template-pagessales-php { overflow-y: scroll; }
+	}
+
+	.scroll {
+		height: 100%;
+		overflow: auto;
+		padding-right: 30px;
+	}
+
+	.scroll_container {
+		display: none !important;
+	}
+
+	header {
+		height: 100px;
+		min-width: 960px;
+
+		section {
+			margin: 0 auto;
+			position: relative;
+			width: 905px;
+		}
+
+		.center {
+			left: 355px;
+			width: 200px;
+		}
+		.right {
+			left: 530px;
+		}
+		.left, .right {
+			width: 375px;
+		}
+
+		a {
+			font-size: 30px;
+			padding-top: 28px;
+			&.current {
+				padding-top: 20px;
+			}
+		}
+
+		.logo {
+			img {
+				top: 46px;
+				width: 83px;
+			}
+		}
+	}
+
+	#main {
+		max-width: 1400px;
+		min-width: 960px; 
+		overflow: hidden;
+	}
+
+	.home {
+		.content {
+			h2 {
+				font-size: 40px;
+				.big {
+					font-size: 95px;
+					span {
+						font-size: 95px;
+					}
+				}
+			}
+		}
+	}
+
+	#main.template-about {
+		h2.tagline {
+			font-size: 45px;
+		}
+		p.big {
+			font-size: 24px;
+			margin-top: 200px;
+			.hotspot {
+				top: 20px;
+			}
+		}
+
+		.bg {
+			margin: 32px 52px;
+		}
+		.hotspot {
+			background-color: transparent;
+			background-image: url(../images/hotspot-ie.png);
+			border: 0 none;
+			@include border-radius(0);
+			height: 60px;
+			width: 60px;
+
+			&:before,
+			&:after { display: none; }
+		}
+	}
+	.scale { top: 80%; }
+	.scrap { top: 57%; }
+
+	#main.template-contact {
+		.content {
+			margin: 30px 90px 0 0;
+			
+			h2 { font-size: 24px; margin: 0; }
+			p { margin-top: 0; }
+
+			form {
+				top: 120px;
+			}
+		}
+	}
+
+	#main.template-services {
+		padding-top: 150px;
+
+		.content {
+			left: 270px;
+			width: 450px;
+
+			h2 {
+				top: 146px;
+				width: 260px;
+				&[data-name="junk"] { top: 215px; }
+				&[data-name="scrap"] { top: 284px; }
+
+				a {
+					font-size: 35px;
+				}
+			}
+
+			.module {
+				p.uppercase a { border-bottom: 0 none !important; }
+			}
+		}
+	}
+
+	#main.template-featured-sales {
+		.content {
+			left: 50px;
+			margin: 0 auto 20px;
+			width: 960px;
+
+			section { 
+				width: 200px;
+
+				ul {
+					height: 30px;
+					.dropdown {
+						background-image: url(../images/dropdown-ie.png);
+					}
+					.arrow { display: none; }
+
+					&.collapse {
+						height: 108px;
+					}
+				}	
+
+				&.alignright {
+					left: -100px;
+				}		
+			}
+
+			.module {
+				margin-right: 20px;
+				width: 200px;
+
+				.more {
+					top: 15px !important;
+					width: 120px;
+				}
+			}
+		}
+	}
+
+	.IE-left { clear: left; }
+	.description { 
+		height: 270px;
+		max-height: 270px !important;
+		overflow: hidden; 
+	}
+
+	.greyscale {
+		background: url(../images/greyscale.png) transparent;
+	}
+
+	#warranty,
+	#exchange { 
+		overflow: auto;
+	}
+
+
+}
+
+.lt-ie8 {
+	#main.template-featured-sales {
+		.content {
+			section {
+				&.alignright {
+					font-size: 24px !important;
+					a { display: inline; }
+				}
+			}
+		}
+	}
+
+	#main.template-contact {
+		.content {
+			form {
+				padding: 30px;
+				width: 700px;
+
+				input {
+					margin: 0 20px 20px 0;
+					padding-left: 5px;
+					padding-right: 5px;
+					&#firstName {
+						width: 190px;
+					}
+					&#lastName {
+						width: 190px;
+					}
+					&#org {
+						width: 250px;
+					}
+
+					&#address,
+					&#city,
+					&#state,
+					&#zip {
+						display: none;
+					}
+				}
+
+				li.chosen {
+					color: lighten($blue, 25%);
+				}
+			}
+		}
+	}
+
+	footer {
+		.alignright {
+			position: absolute;
+			left: 700px;
+		}
+	}
+}

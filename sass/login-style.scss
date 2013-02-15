@@ -1,0 +1,21 @@
+@import 'compass';
+
+.repeater { // big table
+	table {
+		.row { // individual rows
+			.repeater { // inner repeater
+				thead {
+					display: none;
+				}
+
+				& > table {
+					@include box-shadow(0 0 0 #fff);
+				}
+
+				.order {
+					display: none;
+				}
+			}
+		}
+	}
+}

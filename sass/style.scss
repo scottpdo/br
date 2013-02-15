@@ -1,0 +1,2013 @@
+// ----- imports
+@import 'compass';
+@import 'animation';
+
+// ----- colors
+
+$black: #1E1E1E; .black { color: $black; }
+$blue: #0173BC; .blue { color: $blue; }
+
+// ----- mixins
+
+@mixin tight {
+	margin: 0;
+	padding: 0;
+}
+@mixin transition {
+	@include transition-duration(0.2s);
+	@include transition-timing-function(ease-in-out);
+}
+
+// ----- fonts
+
+/*! @license
+ * MyFonts Webfont Build ID 2421643, 2012-11-30T11:53:54-0500
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: PF Din Text Comp Pro Medium by Parachute
+ * URL: http://www.myfonts.com/fonts/parachute/pf-din-text-comp-pro/medium/
+ * Copyright: Copyright (c) 2002, 2005 Parachute&#x00A8;, www.parachute.gr.  All rights reserved.
+ * Licensed pageviews: 10,000
+ * 
+ * 
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2421643
+ * 
+ * © 2012 Bitstream Inc
+*/
+@font-face {
+	font-family: 'PFDinTextCompPro-Medium';
+	src: url('../fonts/24F38B_0_0.eot');
+	src: url('../fonts/24F38B_0_0.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/24F38B_0_0.woff') format('woff'),
+		 url('../fonts/24F38B_0_0.ttf') format('truetype'),
+		 url('../fonts/24F38B_0_0.svg#wf') format('svg');
+}
+@font-face {
+    font-family: 'League Gothic';
+    src: url('../fonts/League_Gothic-webfont.eot');
+    src: url('../fonts/League_Gothic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/League_Gothic-webfont.woff') format('woff'),
+         url('../fonts/League_Gothic-webfont.ttf') format('truetype'),
+         url('../fonts/League_Gothic-webfont.svg#LeagueGothicRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+ 
+
+// ----- general styles and structure
+
+* {
+	@include box-sizing(border-box);
+	font-size: 20px;
+}
+
+html {
+	background-position: center center;
+	background-size: cover;
+	height: 100%;
+}
+
+body {
+	background: $black;
+	color: #fff;
+	font-family: 'PFDinTextCompPro-Medium', 'League Gothic', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	height: 100%;
+	line-height: 1.2;
+	min-height: 100%;
+	@include opacity(0.99);
+	position: relative;
+	overflow: hidden;
+	@media screen and (max-width: 800px) {
+		overflow-y: scroll;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 { 
+	font-weight: normal; 
+	text-transform: uppercase;
+}
+
+a,
+a:visited {
+	border-bottom: 0.15em solid;
+	color: #fff;
+	@include opacity(0.99);
+	text-decoration: none;
+	@include transition;
+
+	&:active,
+	&:hover {
+		@include opacity(0.8);
+	}
+}
+
+.lowercase {
+	text-transform: none;
+}
+.uppercase {
+	text-transform: uppercase;
+}
+.big, .big * {
+	font-size: 32px;
+}
+
+::-webkit-input-placeholder {
+    color: $black;
+}
+
+:-moz-placeholder {  
+    color: $black;  
+}
+
+// internal scrolling elements
+.scroll { 
+	padding: 0 60px 30px 0;
+	position: relative;
+	top: 0;
+
+	.touch & {
+		height: 100%;
+		overflow: auto;
+		padding-right: 30px;
+		top: 0 !important;
+	}
+}
+.scroll_container {
+	background: #eee;
+	float: right;
+	padding: 10px 6px;
+	position: absolute;
+	right: 0;
+	top: 30px;
+	width: 30px;
+	@media screen and (max-width: 800px) {
+		display: none !important;
+	}
+	.touch & {
+		display: none !important;
+	}
+}
+.scrollbar {
+	background: #ccc;
+	cursor: pointer;
+	height: 60px;
+	position: relative;
+	top: 0;
+	width: 100%;
+}
+
+// ----- header
+
+header {
+	background: $black;
+	@include box-shadow(0 0 16px $black);
+	height: 80px;
+	left: 0;
+	@include opacity(1);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 999;
+
+	@media screen and (max-width: 1240px) {
+		height: 70px;
+	}	
+	@media screen and (max-width: 1000px) {
+		height: 60px;
+	}
+	@media screen and (max-width: 800px) {
+		height: 120px;
+		position: relative;
+	}
+	@media screen and (max-width: 400px) {
+		height: 100px;
+	}
+
+	.left {
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 40%;
+		z-index: 2;
+		@media screen and (max-width: 800px) {
+			padding-left: 5%;
+		}
+		a {
+			float: right;
+		}
+	}
+
+	.center {
+		position: absolute;
+		left: 35%;
+		top: 0;
+		min-width: 200px;
+		width: 30%;
+		z-index: 1;
+		@media screen and (max-width: 800px) {
+			height: 120px;
+			left: 0;
+			width: 100%;
+		}
+	}
+
+	.right {
+		left: 60%;
+		position: absolute;
+		top: 0;
+		width: 40%;
+		z-index: 2;
+		@media screen and (max-width: 800px) {
+			padding-right: 5%;
+		}
+		a {
+			float: left;
+			@media screen and (max-width: 800px) {
+				text-align: right;
+			}
+		}
+	}
+
+	.left, .right {
+		@media screen and (max-width: 800px) {
+			padding-top: 20px;
+		}
+		@media screen and (max-width: 650px) {
+			padding-top: 32px;
+		}
+		@media screen and (max-width: 450px) {
+			padding-top: 40px;
+		}
+		@media screen and (max-width: 400px) {
+			padding-top: 30px;
+		}
+
+		a {
+			@media screen and (max-width: 800px) {
+				width: 100%;
+			}
+		}
+	}
+
+	a {
+		border: 0 none;
+		border-bottom: 0 none !important;
+		color: #fff;
+		display: block;
+		font-size: 40px;
+		margin: 0 20px;
+		padding: 18px 10px;
+		text-transform: uppercase;
+
+		@media screen and (max-width: 1240px) {
+			font-size: 30px;
+		}
+		@media screen and (max-width: 1000px) {
+			font-size: 23px;
+		}
+		@media screen and (max-width: 800px) {
+			font-size: 30px;
+			padding: 2px 10px;
+			&.about-link {
+				position: relative;
+				top: -40px;
+			}
+			&.contact-link {
+				position: relative;
+				top: 40px;
+			}
+		}
+		@media screen and (max-width: 650px) {
+			font-size: 24px;
+			&.about-link {
+				top: -32px;
+			}
+			&.contact-link {
+				top: 32px;
+			}
+		}
+		@media screen and (max-width: 480px) {
+			font-size: 18px;
+			&.about-link {
+				top: -25px;
+			}
+			&.contact-link {
+				top: 25px;
+			}
+		}
+		@media screen and (max-width: 420px) {
+			font-size: 16px;
+			&.about-link {
+				top: -23px;
+			}
+			&.contact-link {
+				top: 23px;
+			}
+		}
+
+		&.current {
+			border-top: 8px solid $blue;
+			padding-top: 10px;
+
+			@media screen and (max-width: 800px) {
+				border-top: 0;
+				color: lighten($blue, 25%);
+				padding-top: 2px;
+			}
+		}
+	}
+
+	.logo {
+		background: $black;
+		@include border-radius(800px);
+		@include box-shadow(0 18px 16px -16px $black);
+		margin: 0 auto;
+		@include opacity(1);
+		padding-top: 30px;
+		position: relative;
+		top: -60px;
+		max-width: 200px;
+
+		@media screen and (max-width: 1000px) {
+			max-width: 200px;
+			padding-top: 20px;
+			top: -50px;
+		}
+		@media screen and (max-width: 800px) {
+			@include box-shadow(0 0 0 $black);
+			padding-bottom: 18px;
+		}
+		@media screen and (max-width: 400px) {
+			max-width: 180px;
+			top: -70px;
+		}
+
+		img {
+			display: block;
+			margin: 0 auto 55px;
+			position: relative;
+			top: 45px;
+			width: 140px;
+			@media screen and (max-width: 1000px) {
+				width: 120px;
+			}
+			@media screen and (max-width: 400px) {
+				margin-bottom: 60px;
+				top: 60px;
+				width: 100px;
+			}
+		}
+
+		&:active,
+		&:hover {
+			@include opacity(1);
+		}
+	}
+}
+
+// ----- main
+
+#main {
+	background-position: center center;
+	background-size: cover;
+	height: 100%;
+	padding-top: 80px;
+	position: relative;
+	width: 100%;
+	// Padding at top must match header height
+	@media screen and (max-width: 1240px) {
+		padding-top: 70px;
+	}	
+	@media screen and (max-width: 1000px) {
+		padding-top: 60px;
+	}
+	@media screen and (max-width: 800px) {
+		height: auto !important;
+		padding: 0;
+	}
+}
+
+// ----- mobile pattern for background images
+
+	// apply to #main on About, Contact, 404 pages
+#main {
+
+	&.template-about,
+	&.template-contact,
+	.error404 & {
+		@media screen and (max-width: 800px) {
+			background-position: 0 0 !important;
+			background-repeat: no-repeat;
+			background-size: 100%;
+			padding-top: 66%;
+		}
+	}
+}
+
+
+// ----- home page
+
+.home {
+	.content {
+		background-position: center center;
+		background-size: cover;
+		height: 100%;
+		left: 100%;
+		padding: 0 5% 0 8%;
+		position: absolute;
+		top: 0;
+		width: 100%;
+
+		.preload & {
+			display: none; // keep hidden until ready
+		}
+
+		&[data-name="parts"] {
+			background-position: 50% 125%;
+			background-image: url(../images/home_parts-1400.jpg);
+			@media screen and (min-width: 1400px) {
+				background-image: url(../images/home_parts.jpg);
+			}
+		}
+
+		&[data-name="scrap"] {
+			background-position: 50% 60%;
+			background-image: url(../images/home_scrap-1400.jpg);
+			@media screen and (min-width: 1400px) {
+				background-image: url(../images/home_scrap.jpg);
+			}
+		}
+
+		&[data-name="junk"] {
+			background-image: url(../images/home_junk-1400.jpg);
+			@media screen and (min-width: 1400px) {
+				background-image: url(../images/home_junk.jpg);
+			}
+		}
+
+		h2 {
+			font-size: 75px;
+			line-height: 1;
+			@include text-shadow(0 0 15px transparentize(lighten($black, 20%), .5));
+
+			@media screen and (max-height: 650px) {
+				font-size: 45px;
+			}
+			@media screen and (max-width: 1500px) {
+				font-size: 60px;
+			}
+			@media screen and (max-width: 1040px) {
+				font-size: 45px;
+			}
+			@media screen and (max-width: 900px) {
+				font-size: 37px;
+			}
+			@media screen and (max-height: 500px) {
+				font-size: 30px;
+			}
+			@media screen and (max-width: 720px) {
+				font-size: 30px;
+			}
+
+			.big {
+				font-size: 170px;
+				position: relative;
+				top: -0.08em;
+				@media screen and (max-height: 650px) {
+					font-size: 100px;
+				}
+				@media screen and (max-width: 1500px) {
+					font-size: 140px;
+				}
+				@media screen and (max-width: 1240px) {
+					font-size: 120px;
+				}
+				@media screen and (max-width: 1040px) {
+					font-size: 100px;
+				}
+				@media screen and (max-width: 900px) {
+					font-size: 90px;
+				}
+				@media screen and (max-height: 500px) {
+					font-size: 60px;
+				}
+				@media screen and (max-width: 720px) {
+					font-size: 60px;
+				}
+				@media screen and (max-width: 420px) {
+					font-size: 45px;
+				}
+				
+				span {
+					font-size: inherit;
+					position: relative;
+					top: 0.1em;
+				}
+			}
+		}
+
+		// Stack 'em!
+		@media screen and (max-width: 800px) {
+			border-bottom: 10px solid $black;
+			background-position: center center !important; // override individual positioning
+			height: 450px;
+			left: 0 !important; // override sliding in js
+			padding-top: 80px !important; // override js
+			position: relative;
+			width: 100%;
+			&[data-name="junk"] {
+				border-bottom: 0 none;
+			}
+		}
+		@for $i from 1 through 5 {
+			@media screen and (max-width: 800px - 50*$i) {
+				height: 450px - 35*$i;
+			}
+		}
+		&[data-name="junk"] {
+			@for $i from 1 through 5 {
+				@media screen and (max-width: 800px - 50*$i) {
+					// compensating for lack of border on bottom
+					height: 440px - 35*$i;
+				}
+			}
+		}
+	}
+}
+
+.rotators {
+	background: lighten($black, 12%);
+	border: 10px solid $black;
+	bottom: 36px;
+	height: 80px;
+	position: fixed;
+	width: 100%;
+	z-index: 999;
+	@media screen and (max-width: 800px) {
+		display: none;
+	}
+
+	.bar {
+		background: $blue;
+		height: 10px;
+		margin-bottom: -10px;
+		position: relative;
+		width: 32.667%;
+	}
+
+	.module {
+		background-color: $black;
+		background-position: center center;
+		background-size: cover;
+		border-top: 10px solid $black;
+		cursor: pointer;
+		float: left;
+		height: 70px;
+		position: relative;
+		top: 10px;
+		width: 32.667%;
+		@media screen and (max-width: 940px) {
+			width: 32%;
+		}
+	}
+
+	[data-name="parts"] {
+		background-image: url(../images/home_parts_rotator.jpg);	
+	}
+
+	[data-name="scrap"] {
+		background-image: url(../images/home_scrap_rotator.jpg);	
+	}
+
+	[data-name="junk"] {
+		background-image: url(../images/home_junk_rotator.jpg);	
+	}
+
+	.sep {
+		background: $black;
+		float: left;
+		height: 90px;
+		position: relative;
+		width: 1%;
+		@media screen and (max-width: 940px) {
+			width: 2%;
+		}
+	}
+}
+
+// ----- about
+
+#main.template-about {
+	background-image: url(../images/about-1400.jpg);
+	background-position: 50% 20%;
+	@media screen and (min-width: 1400px) {
+		background-image: url(../images/about.jpg);
+	}
+	
+	h2.tagline {
+		font-size: 80px;
+		line-height: 1;
+		margin: 120px 0 0 10%;
+		position: absolute;
+		@include text-shadow(0 0 11px transparentize($black, 0.6));
+		width: 60%;
+		@media screen and (max-width: 1300px) {
+			font-size: 60px;
+		}
+		@media screen and (max-width: 1000px) {
+			font-size: 45px;
+		}
+		@media screen and (max-width: 800px) {
+			height: 150px;
+			margin: 0 0 -150px 30px;
+			position: relative;
+			top: -115px;
+			width: 90%;
+		}
+		@media screen and (max-width: 600px) {
+			font-size: 38px;
+			top: -101px;
+		}
+		@media screen and (max-width: 480px) {
+			font-size: 32px;
+			top: -80px;
+		}
+		@media screen and (max-width: 400px) {
+			font-size: 26px;
+		}
+	}
+	p.big {
+		margin: 300px 0 0 10%;
+		position: absolute;
+		@include text-shadow(0 0 7px transparentize($black, 0.5));
+		@media screen and (max-width: 1200px) {
+			font-size: 24px;
+			margin-top: 260px;
+		}
+		@media screen and (max-width: 1000px) {
+			margin-top: 240px;
+		}
+		@media screen and (max-width: 800px) {
+			display: none;
+		}
+		.hotspot {
+			display: inline-block;
+			position: relative;
+			@media screen and (max-width: 1000px) {
+				top: 2px;
+			}
+		}
+
+		&.touch {
+			display: none;
+		}
+		.touch & {
+			display: none;
+			&.touch {
+				display: block;
+				@media screen and (max-width: 800px) {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.content {
+		height: 100%;
+		position: relative;
+		@media screen and (max-width: 800px) {
+			background: $blue;
+			height: auto;
+			padding-bottom: 20px;
+		}
+	}
+
+	.bg {
+		background: $blue;
+		background: transparentize($blue, .2);
+		margin: 12px 32px;
+		overflow: hidden;
+		position: absolute;
+		height: 150px;
+		width: 0;
+		z-index: 1;
+
+		&.crane {
+			height: 130px;
+		}
+
+		&.scrap {
+			p {
+				@media screen and (max-width: 800px) {
+					margin-bottom: 8px;
+				}
+			}
+		}
+
+		@media screen and (max-width: 800px) {
+			background: none transparent;
+			height: auto !important;
+			left: 0 !important;
+			margin: 0;
+			position: relative;
+			top: 0 !important;
+			width: 100% !important;
+		}
+
+		p {
+			margin: 0;
+			padding: 25px;
+			width: 300px;
+
+			@media screen and (max-width: 800px) {
+				display: block !important;
+				height: auto;
+				margin: 24px 30px 0;
+				opacity: 1 !important; // override fadeIn/Out
+				padding: 0;
+				width: auto;
+			}
+		}
+	}
+
+	.hotspot-container {
+		position: absolute;
+		width: 140px;
+		@media screen and (max-width: 800px) {
+			display: none;
+		}
+	}
+	.hotspot {
+		@include animation(pulse 2s infinite);
+		background: $blue;
+		border: 4px solid #fff;
+		@include border-radius(12px);
+		cursor: pointer;
+		display: block;
+		height: 24px;
+		margin: 0 20px;
+		position: absolute;
+		width: 24px;
+		z-index: 2;
+
+		&:hover {
+			background: lighten($blue, 10%);
+		}
+		
+		&:after {
+			background: none transparent;
+			border: 4px solid $blue;
+			border: 4px solid transparentize($blue, .75);
+			@include border-radius(56px);
+			content: '';
+			display: block;
+			height: 56px;
+			left: -24px;
+			position: absolute;
+			top: -24px;
+			width: 56px;
+			z-index: 0;
+		}
+
+		&:before {
+			background: none transparent;
+			border: 4px solid $blue;
+			border: 4px solid transparentize($blue, .5);
+			@include border-radius(36px);
+			content: '';
+			display: block;
+			height: 36px;
+			left: -14px;
+			position: absolute;
+			top: -14px;
+			width: 36px;
+		}
+		
+		@media screen and (max-width: 800px) {
+			display: none;
+		}			
+	}
+}
+.scale {
+	left: 20%;
+	top: 85%;
+
+	@media screen and (max-width: 1400px) {
+		top: 80%;
+	}
+	@media screen and (max-width: 1220px) {
+		top: 70%;
+	}
+	@media screen and (max-height: 720px) {
+		top: 80%;
+	}
+	
+}
+.crane {
+	left: 65%;
+	top: 17%;
+}
+.scrap {
+	left: 55%;
+	top: 65%;
+	@media screen and (max-width: 1400px) {
+		top: 55%;
+	}
+}
+
+@include keyframes(pulse) {
+	0%, 100% {
+		background: $blue;
+	}
+	50% {
+		background: lighten($blue, 30%);
+	}
+}
+
+// ----- contact
+
+#main.template-contact {
+	background-image: url(../images/contact-1400.jpg);
+	@media screen and (min-width: 1400px) {
+		background-image: url(../images/contact.jpg);
+	}
+
+	.title {
+		display: none;
+		@media screen and (max-width: 800px) {
+			display: block;
+			font-size: 60px;
+			height: 100px;
+			margin-bottom: -100px !important;
+			position: relative;
+			top: -110px;
+		}
+	}
+
+	.content {
+		float: right;
+		margin: 20px 8% 0 0;
+		width: 320px;
+		@media screen and (min-height: 700px) {
+			margin-top: 5%;
+		}
+
+		section {
+			background: $blue;
+			background: transparentize($blue, .2);
+			margin: 0;
+			padding: 20px 40px 0;
+			&.hours { padding-top: 30px; }
+			&.contact-info {
+				padding-bottom: 40px;
+				margin-bottom: 14px;
+			}
+		}
+
+		@media screen and (max-width: 1000px) {
+			margin-top: 100px;
+		}
+		@media screen and (max-width: 800px) {
+			background: $blue;
+			margin: 0;
+			padding: 30px;
+			width: 100%;
+		}
+		h2 {
+			margin: 0;
+		}
+		p {
+			font-size: 17px;
+			line-height: 1;
+			margin: 5px 0 0;
+
+			a {
+				font-size: 17px;
+				line-height: 1;
+			}
+		}
+
+		form {
+			background: $black;
+			@include box-shadow(0 0 10px $black);
+			display: none;
+			left: 20%;
+			overflow: hidden;
+			padding: 30px;
+			position: absolute;
+			top: 200px;
+			width: 60%;
+			z-index: 999;
+			@media screen and (max-width: 1000px) {
+				left: 10%;
+				width: 80%;
+			}
+			
+			h2 {
+				margin: 0 0 8px;
+			}
+
+			p {
+				font-size: 20px;
+			}
+
+			input {
+				border: 0 none;
+				@include border-radius(0);
+				float: left;
+				font-family: 'PFDinTextCompPro-Medium', 'League Gothic', sans-serif;
+				font-size: 18px;
+				margin: 0 3% 3% 0;
+				padding: 4px 6px 2px;
+				@include transition;
+				width: 100%;
+
+				&.error { background: #fbb; &:focus { background: #fff; } }
+
+				&#firstName {
+					width: 23%;
+					@media screen and (max-width: 600px) {
+						width: 48.5%;
+					}
+				}
+				&#lastName {
+					width: 32%;
+					@media screen and (max-width: 600px) {
+						margin-right: 0;
+						width: 48.5%;
+					}
+				}
+				&#org {
+					margin-right: 0;
+					width: 39%;
+					@media screen and (max-width: 600px) {
+						width: 100%;
+					}
+				}
+				&#address {
+					width: 39%;
+					@media screen and (max-width: 600px) {
+						margin-right: 0;
+						width: 100%;
+					}
+				}
+				&#city {
+					width: 23%;
+					@media screen and (max-width: 600px) {
+						width: 52%;
+					}
+				}
+				&#state {
+					width: 9%;
+					@media screen and (max-width: 600px) {
+						font-size: 15px;
+						padding-top: 8px;
+						width: 15%;
+					}
+				}
+				&#zip {
+					margin-right: 0;
+					width: 20%;
+					@media screen and (max-width: 600px) {
+						margin-right: 0;
+						width: 27%;
+					}
+				}
+				&#email {
+					margin-bottom: 15px;
+				}
+				&#how {
+					margin-top: 10px;
+				}
+
+				&[type="submit"] {
+					background: none transparent;
+					border: 0 none;
+					border-bottom: 0.15em solid;
+					color: #fff;
+					float: right;
+					font-size: 24px;
+					margin: 1% 0 0;
+					padding: 0;
+					text-transform: uppercase;
+					@include transition;
+					width: auto;
+					&:hover {
+						@include opacity(0.8);
+					}
+				}
+			}
+
+			ul {
+				margin: 12px 0;
+				padding-left: 0;
+			}	
+
+			li {
+				cursor: pointer;
+				float: left;
+				list-style-type: none;
+				@include tight;
+				margin-bottom: 1%;
+				width: 25%;
+				@media screen and (max-width: 1000px) {
+					width: 50%;
+				}
+				&:before {
+					background: none transparent;
+					border: 3px solid #fff;
+					content: '';
+					float: left;
+					height: 16px;
+					margin-right: 8px;
+					width: 16px;
+				}
+				&.chosen:before {
+					background: url(../images/close.png) -7px -7px;
+				}
+			}
+
+			.close {
+				background: url(../images/close.png) $blue;
+				cursor: pointer;
+				display: block;
+				height: 30px;
+				position: absolute;
+				right: 0;
+				top: 0;
+				@include transition;
+				width: 30px;
+				&:hover {
+					background-color: lighten($blue, 10%);
+				}
+			}	
+		}
+	
+		@media screen and (max-width: 800px) {
+			
+			section,
+			form {
+				background: none transparent;
+				@include box-shadow(0 0 0 #fff);
+				display: block !important;
+				height: auto !important;
+				left: 0 !important;
+				margin-bottom: 24px;
+				padding: 0;
+				position: relative;
+				top: 0 !important;
+				width: 100% !important;
+
+				&.hours { padding-top: 0; }
+				&.contact-info {
+					margin-bottom: 24px;
+					padding-bottom: 3px;
+				}
+
+				p {
+					margin-bottom: 0;
+				}
+
+				.close {
+					display: none;
+				}
+
+				li {
+					@media screen and (max-width: 400px) {
+						width: 100%;
+					}
+				}
+
+				// after submitting the form
+				&.thanks {
+					height: 200px !important;
+					left: 30px !important;
+					margin-bottom: -200px !important;
+					position: absolute;
+					@include text-shadow(0 0 4px transparentize($black, 0.5));
+					top: 40px !important;
+				}
+			}
+			form {
+				margin-bottom: 10px;
+			}
+
+			.contact {
+				display: none;
+			}
+		}
+	}
+}
+
+
+// ----- services
+
+#main.template-services {
+	padding-top: 220px;
+
+	@media screen and (max-width: 800px) {
+		padding-top: 0;
+	}
+	.cover {
+		background-position: center center;
+		background-size: cover;
+		display: none;
+		height: 100%;
+		left: 100%;
+		position: absolute;
+		top: 0;
+		width: 100%;
+
+		&[data-name="parts"] {
+			background-image: url(../images/services_parts-1400.jpg);
+			left: 0;
+			@media screen and (min-width: 1400px) {
+				background-image: url(../images/services_parts.jpg);
+			}
+		}
+		&[data-name="junk"] {
+			background-image: url(../images/services_junk-1400.jpg);
+			@media screen and (min-width: 1400px) {
+				background-image: url(../images/services_junk.jpg);
+			}
+		}
+		&[data-name="scrap"] {
+			background-image: url(../images/services_scrap-1400.jpg);
+			@media screen and (min-width: 1400px) {
+				background-image: url(../images/services_scrap.jpg);
+			}
+		}
+
+		@media screen and (max-width: 800px) {
+			display: block;
+			height: 450px;
+			left: 0 !important;
+			position: relative;
+
+			&.full {
+				display: none !important;
+			}
+
+			@for $i from 1 through 5 {
+				@media screen and (max-width: 800px - 50*$i) {
+					height: 450px - 35*$i;
+				}
+			}
+		}
+	}
+
+	.content h2 {
+		left: 0;
+		padding-right: 15px;
+		position: fixed;
+		text-align: right;
+		top: 216px;
+		@include text-shadow(0 0 10px lighten($black, 20%));
+		width: 20%;
+		z-index: 500;
+
+		&[data-name="junk"] {
+			top: 285px;
+		}
+		&[data-name="scrap"] {
+			top: 354px;
+		}
+
+		@media screen and (max-width: 1340px) {
+			width: 22%;
+		}
+		@media screen and (max-height: 650px) {
+			width: 22%;
+		}
+		@media screen and (max-width: 1200px) {
+			width: 24%;
+		}
+		@media screen and (max-height: 550px) {
+			width: 24%;
+		}
+		@media screen and (max-width: 1040px) {
+			width: 27%;
+		}
+		@media screen and (max-width: 960px) {
+			width: 31%;
+		}
+		@media screen and (max-width: 800px) {
+			margin-bottom: -90px;
+			padding-left: 30px;
+			position: relative;
+			text-align: left;
+			top: -110px !important;
+			width: 100%;
+		}
+
+		a {
+			border-bottom: 0 none;
+			font-size: 45px;
+			margin: 0;
+			@media screen and (max-width: 800px) {
+				font-size: 60px;
+			}
+			@media screen and (max-width: 480px) {
+				font-size: 40px;
+			}
+		}
+	}
+
+	.content {
+		left: 20%;
+		position: absolute;
+		width: 30%;
+		z-index: 500;
+		@media screen and (max-width: 1340px) {
+			left: 22%;
+			width: 45%;
+		}
+		@media screen and (max-height: 650px) {
+			left: 22%;
+			width: 45%;
+		}
+		@media screen and (max-width: 1200px) {
+			left: 24%;
+			width: 55%;
+		}
+		@media screen and (max-width: 1040px) {
+			left: 27%;
+		}
+		@media screen and (max-height: 550px) {
+			left: 24%;
+			width: 55%;
+		}
+		@media screen and (max-width: 960px) {
+			left: 31%;
+		}
+		@media screen and (max-width: 800px) {
+			background: $blue;
+			left: 0;
+			position: relative;
+			width: 100%;
+		}
+
+		.module {
+			background: $blue;
+			background: transparentize($blue, 0.2);
+			min-height: 200px;
+			overflow: hidden;
+			padding: 30px 0;
+			position: absolute;
+			top: -10px;
+			width: 0;
+			z-index: 999;
+
+			*:last-child {
+				margin-bottom: 0;
+			}
+
+			h3, p {
+				padding: 0 30px 0 40px;
+				@media screen and (max-width: 800px) {
+					padding-left: 30px;
+				}
+			}
+
+			h3 {
+				font-size: 28px;
+				margin: 3px 0 5px;
+			}
+
+			p, p a {
+				@media screen and (max-width: 800px) {
+					font-size: 17px;
+				}
+			}
+			p.uppercase { // Inventory search
+				display: block;
+				@include tight;
+				text-align: center;
+				a {
+					display: inline-block;
+					font-size: 28px;
+					margin: 0;
+					@media screen and (max-width: 800px) {
+						border-bottom: 0.15em solid;
+						display: inline-block;
+						font-size: 25px;
+						margin-top: 12px;
+						text-align: left;
+					}
+				}
+			}
+
+			&[data-name="parts"] {
+				background: none transparent;
+				padding: 0;
+
+				div {
+					background: $blue;
+					background: transparentize($blue, 0.2);
+					margin-bottom: 12px;
+					position: relative;
+					padding: 32px 0;
+					top: -2px;
+					@include transition;
+
+					@media screen and (max-width: 800px) {
+						background: $blue;
+						margin-bottom: 0;
+						padding: 32px 0 0;
+						top: 0;
+					}
+				}
+			}
+
+			@media screen and (max-width: 800px) {
+				background: $blue;
+				position: relative;
+				width: 100% !important;
+				div {
+					display: block !important;
+				}
+			}
+		}
+
+		.bar {
+			background: #fff;
+			height: 45px;
+			position: relative;
+			top: 22px;
+			width: 8px;	
+			z-index: 999;
+			@media screen and (max-width: 800px) {
+				display: none;
+			}
+		}
+	}
+
+	.inventory {
+		padding-left: 60px;
+		padding-right: 60px;
+	}
+}
+
+.inventory { // we use this on the CONTACT page also
+	background: $blue;
+	background: transparentize($blue, 0.2);
+	border-bottom: 0 none !important;
+	cursor: pointer;
+	display: block;
+	height: 60px;
+	padding: 12px 0;
+	text-align: center;
+	text-transform: uppercase;
+	white-space: nowrap;
+	&:active,
+	&:hover {
+		background: $blue;
+		@include opacity(0.99);
+	}
+	span {
+		border-bottom: 0.15em solid;
+		font-size: 28px;
+	}
+}
+
+
+
+// ----- Featured sales
+.page-template-pagessales-php {
+	background: #fff;
+	height: auto;
+	overflow-y: scroll;
+
+	#main {
+		margin-bottom: -38px;
+		padding-bottom: 38px;
+	}
+}
+#main.template-featured-sales {
+	background: #fff;
+	height: auto;
+	min-height: 100%;
+
+	.content {
+		color: $black;
+		margin: 0 10% 20px;
+		padding-top: 70px;
+		position: relative;
+		
+		@media screen and (max-width: 900px) {
+			padding-top: 50px;
+			margin: 0 40px;
+		}
+		@media screen and (max-width: 600px) {
+			margin: 0 10px;
+		}
+
+		section {
+			color: $black;
+			display: block;
+			margin-bottom: 40px;
+			text-transform: uppercase;
+			width: 18%;
+
+			@media screen and (max-width: 1360px) {
+				width: 22%;
+			}
+			@media screen and (max-width: 1000px) {
+				width: 30%;
+			}
+			@media screen and (max-width: 700px) {
+				margin-bottom: 0;
+				width: 47%;
+			}
+			@media screen and (max-width: 400px) {
+				width: 100%;
+			}
+
+			a, a:visited {
+				color: $black;
+			}
+
+			.sorter {
+				float: left;
+				padding-top: 32px;
+				width: 55%;
+				@media screen and (max-width: 520px) {
+					padding-top: 34px;
+					width: 53%;
+				}
+				@media screen and (max-width: 400px) {
+					font-size: 40px !important;
+					margin-top: -40px !important;
+					margin-right: 15px;
+					width: auto;
+				}
+
+				.touch & {
+					font-size: 30px !important; // override fittext
+					margin-top: 0 !important;
+					margin: 0 15px 8px 0;
+					padding-top: 0;
+					width: auto;
+				}
+			}
+
+			ul {
+				// Don't show on touch screens!
+				.touch & {
+					display: none;
+				}
+
+				border-bottom: 4px solid $black;
+				clear: right;
+				cursor: pointer;
+				float: left;
+				height: 26px;
+				list-style: none;
+				@include tight;
+				overflow: hidden;
+				position: relative;
+				width: 45%;
+				
+				@media screen and (max-width: 520px) {
+					width: 47%;
+				}
+				@media screen and (max-width: 400px) {
+					float: left;
+				}
+
+				li {
+					position: relative;
+
+					a {
+						border-bottom: 0 none;
+						color: $black;
+						display: block;
+						font-size: 22px;
+						padding-left: 4px;
+						width: 100%;
+
+						&:active,
+						&:hover {
+							@include opacity(0.99);
+						}
+					}
+				}
+
+				.dropdown {
+					background: $blue;
+					height: 17px;
+					position: absolute;
+					right: 0;					
+					top: 3px;
+					width: 17px;
+				}
+				.arrow {
+					border-right: 2px solid #fff;
+					border-bottom: 2px solid #fff;
+					height: 7px;
+					margin: 0 auto;
+					position: relative;
+					top: 4px;
+					width: 7px;
+					@include transform(rotate(45deg));
+				}	
+
+				&.collapse {
+					background: $black;
+					border-bottom: 0 none;
+					height: 104px;
+					margin-bottom: -100px;
+					overflow: visible;
+					z-index: 10;
+
+					li {
+						a {
+							color: #fff;
+							width: 100%;
+							&:active,
+							&:hover {
+								color: lighten($blue, 10%);
+							}
+						}
+					}
+
+					.dropdown {
+						display: none;
+					}
+				}
+			}
+
+			select {
+				display: none;
+				.touch & {
+					display: block;
+					position: relative;
+					top: 5px;
+				}
+			}
+
+			&.alignleft, &.alignright {
+				margin-left: 0;
+				margin-right: 0;
+			}
+
+			&.alignleft {
+				@media screen and (max-width: 700px) {
+					margin-bottom: 40px;
+				}
+				.touch & { margin-top: 0; }
+			}
+
+			&.alignright {
+				position: relative;
+				top: -5px;
+				a {
+					border-bottom: 4px solid;
+					display: block;
+					font-size: inherit;
+					@include transition-duration(0s);
+					text-align: center;
+					width: 100%;
+				}
+				@media screen and (max-width: 700px) {
+					display: none;
+				}
+			}
+
+			&.bottom {
+				display: none;
+				@media screen and (max-width: 700px) {
+					display: block;
+					margin-bottom: 40px;
+					width: 100%;
+					a {
+						font-size: 30px;
+					}
+				}
+			}
+		}
+
+		article {
+			clear: both;
+		}
+
+		.module {
+			border-top: 8px solid $black;
+			cursor: pointer;
+			float: left;
+			margin: 0 2.5% 40px 0;
+			position: relative;
+			width: 18%;
+			z-index: 1;
+
+			&:nth-child(5n + 5) {
+				margin-right: 0;
+			}
+			&:nth-child(5n + 6) {
+				clear: left;
+			}
+			@media screen and (max-width: 1360px) {
+				margin-right: 4%;
+				width: 22%;
+				&:nth-child(5n + 5) {
+					margin-right: 4%;
+				}
+				&:nth-child(5n + 6) {
+					clear: none;
+				}
+				&:nth-child(4n + 4) {
+					margin-right: 0;
+				}
+				&:nth-child(4n + 5) {
+					clear: left;
+				}
+			}
+			@media screen and (max-width: 1000px) {
+				margin-right: 5%;
+				width: 30%;
+				&:nth-child(5n + 5) {
+					margin-right: 5%;
+				}
+				&:nth-child(4n + 4) {
+					margin-right: 5%;
+				}
+				&:nth-child(4n + 5) {
+					clear: none;
+				}
+				&:nth-child(3n + 3) {
+					margin-right: 0;
+				}
+				&:nth-child(3n + 4) {
+					clear: left;
+				}
+			}
+			@media screen and (max-width: 700px) {
+				margin-right: 6%;
+				width: 47%;
+				&:nth-child(5n + 5),
+				&:nth-child(4n + 4) {
+					margin-right: 6%;
+				}
+				&:nth-child(3n + 3) {
+					margin-right: 6%;
+				}
+				&:nth-child(3n + 4) {
+					clear: none;
+				}
+				&:nth-child(2n + 2) {
+					margin-right: 0;
+				}
+				&:nth-child(2n + 3) {
+					clear: left;
+				}
+			}
+			@media screen and (max-width: 400px) {
+				margin-right: 0 !important;
+				width: 100%;
+			}
+
+			img {
+				height: auto;
+				width: 100%;
+			}
+
+			h3, p { 
+				line-height: 1.1;
+			}
+			h3 {
+				font-size: 24px;
+				margin: 0.4em 0 0 0;
+			}
+			p {
+				margin: 0.3em 0 0 0;
+				&.big {
+					margin-top: 0.2em;
+				}
+			}
+
+			.more {
+				background: $blue;
+				background: transparentize($blue, .4);
+				color: #fff;
+				display: none;
+				left: 25%;
+				padding: 5px;
+				position: absolute;
+				text-align: center;
+				text-transform: uppercase;
+				width: 50%;
+
+				.touch & {
+					background: transparent none;
+					border-bottom: 0.15em solid;
+					color: $blue;
+					display: inline-block !important;
+					font-size: 20px;
+					left: 0;
+					margin-top: 3px;
+					opacity: 1 !important;
+					padding: 0;
+					position: relative;
+					text-align: left;
+					top: 0 !important;
+					width: auto;
+				}
+			}
+
+			.extended {
+				display: none;
+			}
+		}
+	}
+}
+
+.description {
+	background: $black;
+	@include box-shadow(0 0 16px $black);
+	display: none;
+	left: 30%;
+	overflow: hidden;
+	padding: 30px 0 0 30px;
+	position: absolute;
+	top: 200px;
+	width: 40%;
+	z-index: 999;
+
+	.touch & {
+		overflow: auto;
+	}
+	@media screen and (max-width: 1060px) {
+		left: 25%;
+		width: 50%;
+	}
+	@media screen and (max-width: 800px) {
+		height: auto !important;
+		left: 12%;
+		max-height: none !important;
+		position: relative;
+		width: 76%;
+
+		.scroll {
+			padding: 0 30px 30px 0 !important;
+		}
+	}
+	@media screen and (max-width: 600px) {
+		left: 5%;
+		width: 90%;
+	}
+
+	h3 {
+		margin: 0;
+	}
+	.short {
+		margin-top: 0;
+	}
+
+	.scroll {
+		padding: 0 60px 30px 0;
+	}
+
+	img {
+		height: auto;
+		margin: 5px 0 20px;
+		width: 100%;
+		&:last-child {
+			margin-bottom: 30px;
+		}
+	}
+
+	.close {
+		background: url(../images/close.png) $blue;
+		cursor: pointer;
+		display: block;
+		height: 30px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		@include transition;
+		width: 30px;
+		&:hover {
+			background-color: lighten($blue, 10%);
+		}
+	}
+}
+
+
+
+// ----- greyscale
+.greyscale {
+	background: lighten($black, 20%);
+	background: transparentize($black, .4);
+	display: none;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 600;
+}
+
+// ----- 404
+
+.error404 {
+	#main {
+		background-image: url(../images/404-1400.jpg);
+		@media screen and (min-width: 1400px) {
+			background-image: url(../images/404.jpg);
+		}
+
+		a {
+			font-size: 60px;
+			left: 8%;
+			position: absolute;
+			top: 355px;
+		}
+	}
+
+	h1 {
+		font-size: 100px;
+		left: 8%;
+		margin: 0;
+		position: absolute;
+		@include text-shadow(0 0 10px transparentize($black, .5));
+		top: 240px;
+		@media screen and (max-width: 1000px) {
+			font-size: 80px;
+		}
+		@media screen and (max-width: 800px) {
+			font-size: 45px;
+			height: 100px;
+			margin-bottom: -100px;
+			position: relative;
+			top: -90px;
+		}
+		@media screen and (max-width: 450px) {
+			font-size: 36px;
+			top: -80px;
+		}
+	}
+}
+
+// ----- footer
+
+footer {
+	background: $black;
+	bottom: 0;
+	@include box-shadow(0 0 16px $black);
+	height: 38px;
+	position: absolute;
+	padding: 10px 8%;
+	@include transition;
+	width: 100%;
+	z-index: 999;
+	@media screen and (max-width: 800px) {
+		height: 66px;
+		padding: 10px 5%;
+		position: relative;
+	}
+
+	.alignleft,
+	.alignright {
+		margin-bottom: 0;
+		margin-top: 0;
+		font-size: 16px;
+		@media screen and (max-width: 500px) {
+			font-size: 14px;
+		}		
+		a, span {
+			font-size: 16px;
+			line-height: 18px;
+			@media screen and (max-width: 500px) {
+				font-size: 14px;
+			}
+		}
+	}
+	@media screen and (max-width: 800px) {
+		.alignright {
+			clear: both;
+			float: left;
+			margin: 10px 0 0 0;
+			position: absolute;
+			text-align: left;
+			top: 2px;
+		}
+		.alignleft {
+			position: absolute;
+			top: 39px;
+		}
+	}
+
+	.warranty,
+	.exchange {
+		border-bottom: 0.15em solid;
+		cursor: pointer;
+		@include transition;
+
+		&:hover {
+			@include opacity(0.8);
+		}
+	}
+
+	@media screen and (max-width: 400px) {
+		height: 92px;
+
+		.sep {
+			display: none;
+		}
+		.parsley {
+			clear: left;
+			float: left;
+			margin-top: 4px;
+		}
+	}
+}
+
+#warranty,
+#exchange {
+	background: #fff;
+	@include box-shadow(0 0 10px $black);
+	color: $black;
+	left: 20%;
+	overflow: hidden;
+	padding: 30px 0 0 40px;
+	position: absolute;
+	top: 200%;
+	width: 60%;
+	z-index: 999;
+
+	.preload & {
+		@include opacity(0);
+	}
+
+	.touch & {
+		overflow: auto;
+	}
+
+	.template-featured-sales & {
+		height: auto !important;
+		position: relative;
+		margin-bottom: -360px;
+		top: -360px !important;
+	}
+
+	.close {
+		background: url(../images/close.png) $black;
+		cursor: pointer;
+		display: block;
+		height: 30px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		@include transition;
+		width: 30px;
+		&:hover {
+			background-color: lighten($black, 10%);
+		}
+	}
+
+	img {
+		max-width: 50%;
+	}
+
+	@media screen and (max-width: 1000px) {
+		left: 12.5%;
+		width: 75%;
+	}
+
+	@media screen and (max-width: 800px) {
+		height: auto !important;
+		left: 5%;
+		margin-bottom: -300px;
+		padding-left: 30px;
+		position: relative;
+		top: -300px !important;
+		width: 90%;
+		z-index: 1000;
+
+		li, p {
+			font-size: 18px;
+		}
+
+		img {
+			display: none;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		left: 0;
+		width: 100%;
+	}
+}
+
+#wp-admin-bar-wp-logo,
+#wp-admin-bar-comments,
+#wp-admin-bar-new-content,
+#wp-admin-bar-edit,
+#wp-admin-bar-search { display: none; }
