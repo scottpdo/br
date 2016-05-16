@@ -52,7 +52,7 @@ function br_dashboard_right_now() {
 
     echo '<p>Change hours, phone, and other info on the Contact page and copy on the Services page on the left.</p>';
 
-    echo '<p>If you have questions or need website support, email <a href="mailto:scott@parsleyandsprouts.com">scott@parsleyandsprouts.com</a>.</p>';
+    echo '<p>If you have questions or need website support, email <a href="mailto:scott.p.donaldson@gmail.com">scott.p.donaldson@gmail.com</a>.</p>';
 
     echo "\n\t".'</div></div><!-- .clearfix -->';
 }
