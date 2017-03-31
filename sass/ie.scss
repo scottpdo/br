@@ -1,11 +1,11 @@
 // ----- imports
-@import 'compass';
-@import 'animation';
+@import "compass";
+@import "compass/css3/animation";
 
 // ----- colors
 
-$black: #1E1E1E; 
-$blue: #0173BC; 
+$black: #1E1E1E;
+$blue: #0173BC;
 
 // ----- mixins
 
@@ -77,7 +77,7 @@ $blue: #0173BC;
 
 	#main {
 		max-width: 1400px;
-		min-width: 960px; 
+		min-width: 960px;
 		overflow: hidden;
 	}
 
@@ -128,7 +128,7 @@ $blue: #0173BC;
 	#main.template-contact {
 		.content {
 			margin: 30px 90px 0 0;
-			
+
 			h2 { font-size: 24px; margin: 0; }
 			p { margin-top: 0; }
 
@@ -168,7 +168,7 @@ $blue: #0173BC;
 			margin: 0 auto 20px;
 			width: 960px;
 
-			section { 
+			section {
 				width: 200px;
 
 				ul {
@@ -181,11 +181,11 @@ $blue: #0173BC;
 					&.collapse {
 						height: 108px;
 					}
-				}	
+				}
 
 				&.alignright {
 					left: -100px;
-				}		
+				}
 			}
 
 			.module {
@@ -201,10 +201,10 @@ $blue: #0173BC;
 	}
 
 	.IE-left { clear: left; }
-	.description { 
+	.description {
 		height: 270px;
 		max-height: 270px !important;
-		overflow: hidden; 
+		overflow: hidden;
 	}
 
 	.greyscale {
@@ -212,7 +212,7 @@ $blue: #0173BC;
 	}
 
 	#warranty,
-	#exchange { 
+	#exchange {
 		overflow: auto;
 	}
 

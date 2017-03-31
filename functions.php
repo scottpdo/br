@@ -40,14 +40,14 @@ remove_action('wp_head', 'wp_generator');
 // Dashboard widget
 function br_dashboard_widgets() {
     wp_add_dashboard_widget ( 'br_dashboard_right_now', 'B&R Website Admin', 'br_dashboard_right_now' );
-} 
+}
 add_action('wp_dashboard_setup', 'br_dashboard_widgets' );
 function br_dashboard_right_now() {
     global $wp_registered_sidebars;
 
     echo '<div class="clearfix">';
     echo "\n\t".'<div class="table table_content">';
-    
+
     echo '<p class="sub">Add or remove Featured Sales on the left. Before or after uploading images, be sure to <strong>crop images to 400px wide by 200px high.</strong></p>';
 
     echo '<p>Change hours, phone, and other info on the Contact page and copy on the Services page on the left.</p>';
@@ -60,8 +60,8 @@ function br_dashboard_right_now() {
 // Remove a few admin pages
 add_action( 'admin_menu', 'my_remove_menus', 999 );
 function my_remove_menus() {
-	remove_menu_page( 'edit.php' );
-    remove_menu_page( 'edit.php?post_type=page' );
+	// remove_menu_page( 'edit.php' );
+  //   remove_menu_page( 'edit.php?post_type=page' );
 	remove_menu_page( 'edit-comments.php' );
 	remove_menu_page( 'upload.php' );
     remove_menu_page( 'profile.php' );
@@ -72,9 +72,17 @@ function my_remove_menus() {
 
 // New admin menu
 function register_custom_menu_page() {
-    add_menu_page('Featured Sales', 'Featured Sales', 'editor', 'post.php?post=305&action=edit', '', content_url('themes/br/images/icon-car.png'), 6);
-    add_menu_page('Contact', 'Contact', 'editor', 'post.php?post=303&action=edit', '', content_url('themes/br/images/icon-phone.png'), 7);
-    add_menu_page('Services', 'Services', 'editor', 'post.php?post=304&action=edit', '', content_url('themes/br/images/icon-clipboard.png'), 8);
+    add_menu_page(
+      'Featured Sales',
+      'Featured Sales',
+      'edit_pages',
+      'post.php?post=305&action=edit',
+      '',
+      content_url('themes/br/images/icon-car.png'),
+      6
+    );
+    add_menu_page('Contact', 'Contact', 'edit_pages', 'post.php?post=303&action=edit', '', content_url('themes/br/images/icon-phone.png'), 7);
+    add_menu_page('Services', 'Services', 'edit_pages', 'post.php?post=304&action=edit', '', content_url('themes/br/images/icon-clipboard.png'), 8);
 }
 add_action('admin_menu', 'register_custom_menu_page');
 

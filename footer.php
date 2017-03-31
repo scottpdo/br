@@ -28,7 +28,7 @@
                 <p style="margin-bottom: 60px;">This is the extent of B&R Auto & Truck Salvage, Inc. warranty.</p>
             </div>
 
-            <div class="close"></div>    
+            <div class="close"></div>
         </section>
 
         <section id="exchange">
@@ -48,9 +48,9 @@
             </div>
 
             <div class="close"></div>
-        </section>    
+        </section>
 
-    </div><!-- #main -->   
+    </div><!-- #main -->
 
     <div class="greyscale"></div>
 
@@ -59,13 +59,13 @@
             <span>&copy; <?php echo date('Y'); ?> B &amp; R Auto &amp; Truck Salvage</span>
             &nbsp;&nbsp;<span class="sep">|</span>&nbsp;&nbsp;
             <span class="parsley">Design + Code by <a href="http://www.parsleyandsprouts.com" target="_blank">Parsley &amp; Sprouts</a></span>
-        </div>    
+        </div>
         <div class="alignright uppercase">
             <span class="warranty">Warranty</span>
             &nbsp;&nbsp;|&nbsp;&nbsp;
             <span class="exchange">Exchange/Return Policy</span>
         </div>
-    </footer> 
+    </footer>
 
     <script src="<?php echo bloginfo('template_url'); ?>/js/jquery-ui-1.8.21.custom.min.js"></script>
     <script src="<?php echo bloginfo('template_url'); ?>/js/plugins.js"></script>
@@ -81,6 +81,27 @@
       ga('send', 'pageview');
 
     </script>
+
+    <?php if (is_front_page()) { ?>
+      <link rel="stylesheet" href="<?php echo bloginfo('template_url'); ?>/lib/swal/sweetalert.css">
+      <script src="<?php echo bloginfo('template_url'); ?>/lib/swal/sweetalert.min.js"></script>
+
+      <script>
+      var img = document.createElement('img');
+      var src = '<?php echo bloginfo('template_url'); ?>/images/map-w-text.jpg';
+      img.src = src;
+      img.onload = function() {
+        swal({
+          title: "Updated Directions:",
+          text: '<img src="' + src + '" />',
+          html: true,
+          allowOutsideClick: true,
+          confirmButtonText: "OK",
+        });
+      }
+      </script>
+
+    <?php } ?>
 
     <?php wp_footer(); ?>
     </body>
