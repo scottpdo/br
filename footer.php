@@ -89,11 +89,12 @@
       <script>
       var img = document.createElement('img');
       var src = '<?php echo bloginfo('template_url'); ?>/images/map-w-text.jpg';
+      var altSrc = '<?php echo bloginfo('template_url'); ?>/images/map-alt.jpg';
       img.src = src;
       img.onload = function() {
         swal({
           title: "Updated Directions:",
-          text: '<img src="' + src + '" />',
+          text: '<img src="' + src + '" /><p style="margin-top: 10px;"><a href="' + altSrc + '">(Click for Alternate Route)</a></p>',
           html: true,
           allowOutsideClick: true,
           confirmButtonText: "OK",
