@@ -13,17 +13,17 @@ if (isset($_GET['form']) && $_GET['form'] == 'sent') {
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="google-site-verification" content="fxkwwQ6jFUy94N7omM_F97-nwdW-edtxZU4NtoL85Uo" />
-        
+
         <title><?php wp_title(''); ?></title>
 
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />
 
         <link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/favicon.ico" />
 
-        <link rel="stylesheet" href="<?php echo bloginfo('template_url'); ?>/style.css">
-        <link rel="stylesheet" href="<?php echo bloginfo('template_url'); ?>/css/style.css">
+        <link rel="stylesheet" href="<?php echo bloginfo('template_url'); ?>/style.css?v=20170403">
+        <link rel="stylesheet" href="<?php echo bloginfo('template_url'); ?>/css/style.css?v=20170403">
         <!--[if lt IE 9]><link rel="stylesheet" href="<?php echo bloginfo('template_url'); ?>/css/ie.css"><![endif]-->
-        
+
         <script src="<?php echo bloginfo('template_url'); ?>/js/vendor/modernizr.js"></script>
     <?php wp_head(); ?>
     </head>
@@ -38,9 +38,9 @@ if (isset($_GET['form']) && $_GET['form'] == 'sent') {
     <?php } else { ?>
         <h3 class="visuallyhidden">B &amp; R Auto &amp; Truck Salvage</h3>
     <?php } ?>
-    
-        <?php 
-        $title = get_the_title($post->ID); 
+
+        <?php
+        $title = get_the_title($post->ID);
         $pages_left = array(
             // Order is reversed since pages are floating right
             'Contact Us' => 'contact',
@@ -51,7 +51,7 @@ if (isset($_GET['form']) && $_GET['form'] == 'sent') {
             'Featured Sales' => 'featured-sales',
             ); ?>
         <section>
-            <div class="left"> 
+            <div class="left">
                 <?php foreach ($pages_left as $page => $slug) { ?>
                     <a href="<?php echo home_url().'/'.$slug; ?>" title="<?php echo $page; ?>"
                         <?php echo 'class="'; if ($page == $title) { echo 'current '; } echo $slug.'-link "'; ?>
