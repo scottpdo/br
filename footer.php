@@ -88,8 +88,8 @@
 
       <script>
       var img = document.createElement('img');
-      var src = '<?php echo bloginfo('template_url'); ?>/images/map-w-text.jpg';
-      var altSrc = '<?php echo bloginfo('template_url'); ?>/images/map-alt.jpg';
+      var src = '<?php echo bloginfo('template_url'); ?>/images/map-alt.jpg';
+      var altSrc = '<?php echo bloginfo('template_url'); ?>/images/map-w-text.jpg';
       img.src = src;
       img.onload = function() {
         swal({
