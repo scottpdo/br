@@ -87,13 +87,6 @@ body {
 	@media screen and (max-width: 800px) {
 		overflow-y: scroll;
 	}
-
-	// road construction 2017
-	&.page-template-contact {
-		@media screen and (max-width: 900px) {
-			overflow-y: scroll;
-		}
-	}
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -399,13 +392,6 @@ header {
 		height: auto !important;
 		padding: 0;
 	}
-	// road construction 2017
-	.page-template-contact & {
-		@media screen and (max-width: 900px) {
-			height: auto !important;
-			padding: 0;
-		}
-	}
 }
 
 // ----- mobile pattern for background images
@@ -414,19 +400,9 @@ header {
 #main {
 
 	&.template-about,
-	// &.template-contact, // changed for 2017 road construction
+	&.template-contact,
 	.error404 & {
 		@media screen and (max-width: 800px) {
-			background-position: 0 0 !important;
-			background-repeat: no-repeat;
-			background-size: 100%;
-			padding-top: 66%;
-		}
-	}
-
-	// changed for 2017 road construction
-	&.template-contact {
-		@media screen and (max-width: 900px) {
 			background-position: 0 0 !important;
 			background-repeat: no-repeat;
 			background-size: 100%;
@@ -858,14 +834,14 @@ header {
 // ----- contact
 
 #main.template-contact {
-	background-image: url(../images/contact-redirect-1400.jpg);
+	background-image: url(../images/contact-1400.jpg);
 	@media screen and (min-width: 1400px) {
-		background-image: url(../images/contact-redirect.jpg);
+		background-image: url(../images/contact.jpg);
 	}
 
 	.title {
 		display: none;
-		@media screen and (max-width: 900px) {
+		@media screen and (max-width: 800px) {
 			display: block;
 			font-size: 60px;
 			height: 100px;
@@ -898,7 +874,7 @@ header {
 		@media screen and (max-width: 1000px) {
 			margin-top: 100px;
 		}
-		@media screen and (max-width: 900px) {
+		@media screen and (max-width: 800px) {
 			background: $blue;
 			margin: 0;
 			padding: 30px;
@@ -1074,7 +1050,7 @@ header {
 			}
 		}
 
-		@media screen and (max-width: 900px) {
+		@media screen and (max-width: 800px) {
 
 			section,
 			form {
@@ -1895,15 +1871,6 @@ footer {
 		height: 66px;
 		padding: 10px 5%;
 		position: relative;
-	}
-
-	// road construction 2017
-	.page-template-contact & {
-		@media screen and (max-width: 900px) {
-			height: 66px;
-			padding: 10px 5%;
-			position: relative;
-		}
 	}
 
 	.alignleft,

@@ -44,7 +44,10 @@ get_header(); ?>
 	<section>
 		<h2>Location &amp; Directions</h2>
 		<?php the_field('location'); ?><br />
+		<p>Highway 22 construction is occurring this summer. Please call us for directions (see below).</p>
+		<?php /* road construction
 		<a href="<?php the_field('directions'); ?>" target="_blank">Get Directions</a>&nbsp;<a href="<?php echo bloginfo('template_url'); ?>/images/map-w-text.jpg">(Alternate Route)</a>
+		*/ ?>
 	</section>
 
 	<section class="contact-info">

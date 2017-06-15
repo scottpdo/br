@@ -25,7 +25,7 @@
                 <p>Some states do not allow the exclusion or limitation of incidental or consequential damages, so the above limitations or exclusions may not apply to you. This warranty gives you specific legal rights and you may have other rights which vary from state to state.</p>
                 <h3>Deposits</h3>
                 <p>Deposits on parts are good for only 30 days.</p>
-                <p style="margin-bottom: 60px;">This is the extent of B&R Auto & Truck Salvage, Inc. warranty.</p>
+                <p style="margin-bottom: 60px;">This is the extent of B&amp;R Auto &amp; Truck Salvage, Inc. warranty.</p>
             </div>
 
             <div class="close"></div>
@@ -93,8 +93,8 @@
       img.src = src;
       img.onload = function() {
         swal({
-          title: "Updated Directions:",
-          text: '<img src="' + src + '" /><p style="margin-top: 10px;"><a href="' + altSrc + '">(Click for Alternate Route)</a></p>',
+          title: "Construction",
+          text: '<p style="font-size: 18px; margin-bottom: 10px;">Please note: Highway 22 construction is occurring this summer. Google Maps may not show the correct route.</p><p style="font-size: 18px;"><b>Call us for directions at 507-524-3735.</b></p>',
           html: true,
           allowOutsideClick: true,
           confirmButtonText: "OK",

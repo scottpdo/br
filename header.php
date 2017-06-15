@@ -20,8 +20,8 @@ if (isset($_GET['form']) && $_GET['form'] == 'sent') {
 
         <link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/favicon.ico" />
 
-        <link rel="stylesheet" href="<?php echo bloginfo('template_url'); ?>/style.css?v=20170403">
-        <link rel="stylesheet" href="<?php echo bloginfo('template_url'); ?>/css/style.css?v=20170403">
+        <link rel="stylesheet" href="<?php echo bloginfo('template_url'); ?>/style.css?v=20170615">
+        <link rel="stylesheet" href="<?php echo bloginfo('template_url'); ?>/css/style.css?v=20170615">
         <!--[if lt IE 9]><link rel="stylesheet" href="<?php echo bloginfo('template_url'); ?>/css/ie.css"><![endif]-->
 
         <script src="<?php echo bloginfo('template_url'); ?>/js/vendor/modernizr.js"></script>
