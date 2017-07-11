@@ -82,28 +82,6 @@
 
     </script>
 
-    <?php if (is_front_page()) { ?>
-      <link rel="stylesheet" href="<?php echo bloginfo('template_url'); ?>/lib/swal/sweetalert.css">
-      <script src="<?php echo bloginfo('template_url'); ?>/lib/swal/sweetalert.min.js"></script>
-
-      <script>
-      var img = document.createElement('img');
-      var src = '<?php echo bloginfo('template_url'); ?>/images/map-alt.jpg';
-      var altSrc = '<?php echo bloginfo('template_url'); ?>/images/map-w-text.jpg';
-      img.src = src;
-      img.onload = function() {
-        swal({
-          title: "Construction",
-          text: '<p style="font-size: 18px; margin-bottom: 10px;">Please note: Highway 22 construction is occurring this summer. Google Maps may not show the correct route.</p><p style="font-size: 18px;"><b>Call us for directions at 507-524-3735.</b></p>',
-          html: true,
-          allowOutsideClick: true,
-          confirmButtonText: "OK",
-        });
-      }
-      </script>
-
-    <?php } ?>
-
     <?php wp_footer(); ?>
     </body>
 </html>
