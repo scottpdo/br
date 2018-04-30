@@ -82,6 +82,25 @@
 
     </script>
 
+    <?php if (is_front_page()) { ?>
+      <link rel="stylesheet" href="<?php echo bloginfo('template_url'); ?>/lib/swal/sweetalert.css">
+      <script src="<?php echo bloginfo('template_url'); ?>/lib/swal/sweetalert.min.js"></script>
+      <script>
+      var img = document.createElement('img');
+      var src = '<?php echo bloginfo('template_url'); ?>/images/detour-2018.png';
+      img.src = src;
+      img.onload = function() {
+        swal({
+          title: "Updated Directions:",
+          text: '<p style="font-size: 18px; margin-bottom: 10px;">Please note: Highway 22 construction is occurring this summer. Google Maps may not show the correct route.</p><img src="' + src + '" />',
+          html: true,
+          allowOutsideClick: true,
+          confirmButtonText: "OK",
+        });
+      }
+      </script>
+    <?php } ?>
+
     <?php wp_footer(); ?>
     </body>
 </html>
